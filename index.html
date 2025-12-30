@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Full Tarot Deck Reader</title>
+<style>
+body {
+  margin:0;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg,#1d0b3a,#3f2b96);
+  color:white;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.container{
+  background: rgba(0,0,0,0.5);
+  padding:30px;
+  border-radius:16px;
+  width:360px;
+  text-align:center;
+}
+button{
+  padding:12px 22px;
+  font-size:16px;
+  border:none;
+  border-radius:10px;
+  background-color:#f4c430;
+  cursor:pointer;
+  margin-bottom:20px;
+}
+.card-display{
+  margin-top:20px;
+}
+.card-display img{
+  width:150px;
+  border-radius:10px;
+  margin-bottom:10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>🔮 Tarot Card Reader</h1>
+<p>Click the button to draw a card</p>
+<button onclick="drawCard()">Draw Card</button>
+<div class="card-display" id="cardDisplay"></div>
+</div>
+<script>
+const tarotCards=[
+  // Major Arcana
+  {name:"The Fool", meaning:"New beginnings, adventure, spontaneity.", image:"https://upload.wikimedia.org/wikipedia/commons/6/6f/RWS_Tarot_00_Fool.jpg"},
+  {name:"The Magician", meaning:"Creativity, confidence, taking action.", image:"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
+  {name:"The High Priestess", meaning:"Intuition, mystery, inner wisdom.", image:"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
+  {name:"The Empress", meaning:"Growth, nurturing, abundance.", image:"https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg"},
+  {name:"The Emperor", meaning:"Structure, stability, leadership.", image:"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"},
+  {name:"The Hierophant", meaning:"Tradition, spiritual guidance.", image:"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"},
+  {name:"The Lovers", meaning:"Relationships, choices, harmony.", image:"https://upload.wikimedia.org/wikipedia/commons/7/72/RWS_Tarot_06_Lovers.jpg"},
+  {name:"The Chariot", meaning:"Determination, willpower, control.", image:"https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_07_Chariot.jpg"},
+  {name:"Strength", meaning:"Courage, patience, compassion.", image:"https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg"},
+  {name:"The Hermit", meaning:"Reflection, solitude, inner guidance.", image:"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"},
+  {name:"Wheel of Fortune", meaning:"Cycles, change, fate.", image:"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
+  {name:"Justice", meaning:"Fairness, truth, law.", image:"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"},
+  {name:"The Hanged Man", meaning:"Pause, surrender, perspective.", image:"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"},
+  {name:"Death", meaning:"Endings, transformation, transition.", image:"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"},
+  {name:"Temperance", meaning:"Balance, moderation, patience.", image:"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"},
+  {name:"The Devil", meaning:"Temptation, attachment, materialism.", image:"https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg"},
+  {name:"The Tower", meaning:"Sudden change, upheaval.", image:"https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg"},
+  {name:"The Star", meaning:"Hope, healing, inspiration.", image:"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg"},
+  {name:"The Moon", meaning:"Illusion, intuition, subconscious.", image:"https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg"},
+  {name:"The Sun", meaning:"Joy, success, positivity.", image:"https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg"},
+  {name:"Judgement", meaning:"Rebirth, inner calling, absolution.", image:"https://upload.wikimedia.org/wikipedia/commons/f/f2/RWS_Tarot_20_Judgement.jpg"},
+  {name:"The World", meaning:"Completion, fulfillment, travel.", image:"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_21_World.jpg"},
+  
+  // Minor Arcana examples (expand to full 56 later)
+  {name:"Ace of Cups", meaning:"Emotional beginnings, love, compassion.", image:"https://upload.wikimedia.org/wikipedia/commons/3/3a/Cups01.jpg"},
+  {name:"Two of Cups", meaning:"Partnership, connection, attraction.", image:"https://upload.wikimedia.org/wikipedia/commons/e/ea/Cups02.jpg"},
+  {name:"Three of Cups", meaning:"Celebration, friendship, community.", image:"https://upload.wikimedia.org/wikipedia/commons/d/d6/Cups03.jpg"}
+];
+
+function drawCard(){
+  const index=Math.floor(Math.random()*tarotCards.length);
+  const card=tarotCards[index];
+  const display=document.getElementById("cardDisplay");
+  display.innerHTML=`
+    <img src="${card.image}" alt="${card.name}">
+    <h2>${card.name}</h2>
+    <p>${card.meaning}</p>
+  `;
+}
+</script>
+</body>
+</html>
